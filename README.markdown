@@ -14,7 +14,7 @@ Why it's useful:
 Example:
 =================================================================================================================
 
-User.all.map_by(:id, :first_name, :last_name, :created_at, 'instance_method.demeter.violation')
+**User.all.map_by(:id, :first_name, :last_name, :created_at, 'instance_method.demeter.violation')**
 
 
 
