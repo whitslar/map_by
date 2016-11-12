@@ -18,7 +18,7 @@ Rationale:
 
 I wrote this in an attempt to dry up my uses of Ruby's `map` method: 
 ```Ruby
-User.all.map{ |user| [user.id, user.first_name, user.last_name, user.created_at, user.instance_method.some.thing] }
+User.all.map{ |user| [user.id, user.first_name, user.last_name, user.created_at, 'user.instance_method.foo.bar'] }
 ```
 
 Ruby takes a stab at this problem and provides an ampersand shorthand, but it's not very powerful: 
