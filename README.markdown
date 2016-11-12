@@ -1,35 +1,27 @@
-MapBy was written to be an even shorter, more versatile shorthand for things like array.map(&:method)
-=================================================================================================================
+Example / How to use:
+=====================
+```Ruby
+User.all.map_by(:id, :first_name, :last_name, :created_at, 'instance_method.some.thing')
+```
 
+--------------------------------------------------------------------------------------------
 
+Description:
+==============
+
+MapBy is a more concise shorthand for things like array.map{ |obj| obj.method }  
 It was heavily influenced by Dr. Nic's "Map By Method", http://drnicutilities.rubyforge.org/
-=================================================================================================================
 
 
-Why it's useful:
-=================================================================================================================
-1. 4 LESS SHIFT KEYSTROKES!!!
-2. Violating Demeter isn't ALWAYS the worst.
+Rationale:
+==========
 
-Example:
-=================================================================================================================
+I wrote this in an attempt to dry up my uses of Ruby's `map` method: 
+```Ruby
+User.all.map{ |user| [user.id, user.first_name, user.last_name, user.created_at, user.instance_method.some.thing] }
+```
 
-**User.all.map_by(:id, :first_name, :last_name, :created_at, 'instance_method.demeter.violation')**
-
-
-
-Which I think is arguably nicer than:
-
-Ruby's map method: User.all.map{ |user| [user.id, user.first_name, user.last_name, user.created_at, 
-user.instance_method.demeter.violation] }
-
-OR:
-
-Ruby's ampersand shorthand: User.all.map(&:first_name) (that's it, you're restricted to one attribute)
-
-*****************************************************************************************************************
-
-Should you use this in production?
-=================================================================================================================
-I don't. It's probably fine? But I haven't written any tests yet. I use it to quickly look over records in a 
-Rails env. Use at your own risk!!!
+Ruby takes a stab at this problem and provides an ampersand shorthand, but it's not very powerful: 
+```Ruby
+User.all.map(&:first_name) #lame, because you're restricted to one attribute
+```
