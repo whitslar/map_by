@@ -1,7 +1,7 @@
 Example / How to use:
 =====================
 ```Ruby
-User.all.map_by(:id, :first_name, :last_name, :created_at, 'instance_method.some.thing')
+User.all.map_by(:id, :first_name, :last_name, :created_at, 'instance_method.foo.bar')
 ```
 
 --------------------------------------------------------------------------------------------
